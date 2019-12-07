@@ -16,5 +16,7 @@ form {
 
 input {
   margin-bottom: 20px;
-  height: 20px
+  height: 20px;
+  text-decoration: none;
+  border: none;
 }

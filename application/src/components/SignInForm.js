@@ -17,8 +17,8 @@ function SignInForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(login)
-    axios()
-      .post("localhost:4000/api/login", login)
+    axios
+      .post("http://localhost:4000/api/login", login)
       .then(res => {
         console.log(res)
         //props.history.push('/profile');
@@ -34,14 +34,14 @@ function SignInForm() {
             name="username"
             placeholder="username"
             onChange={handleChanges}
-            // value={userLogin.username}
+            value={login.username}
         />
         <input 
             type="password"
             name="password"
             placeholder="password"
             onChange={handleChanges}
-            // value={userLogin.password}
+            value={login.password}
         />
         <button type="submit" >Let's Go!</button>  
       </form> 
