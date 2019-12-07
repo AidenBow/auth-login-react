@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
-
+import {Route} from "react-router-dom"
 import SignInForm from "./components/SignInForm"
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to FarmerLand!</h1>
-        <SignInForm />
+        <Route exact path="/" component={SignInForm}/>
       </header>
     </div>
   );

@@ -28,6 +28,7 @@ function SignInForm() {
 
   return (
     <div className="signInContainer">
+      <h1>Welcome to FarmerLand!</h1>
       <form onSubmit={handleSubmit}>
         <input 
             type="text"
