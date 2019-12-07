@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios"
 
+import '../App.css';
+
 function SignInForm() {
   const [login, setLogin] = useState({})
   useEffect(() => {
@@ -25,7 +27,7 @@ function SignInForm() {
   }
 
   return (
-    <div>
+    <div className="signInContainer">
       <form onSubmit={handleSubmit}>
         <input 
             type="text"
