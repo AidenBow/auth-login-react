@@ -3,7 +3,7 @@ import axios from "axios"
 
 import '../App.css';
 
-function SignInForm() {
+function SignInForm(props) {
   const [login, setLogin] = useState({})
   useEffect(() => {
 
@@ -21,7 +21,7 @@ function SignInForm() {
       .post("http://localhost:4000/api/login", login)
       .then(res => {
         console.log(res)
-        //props.history.push('/profile');
+        props.history.push('/profile');
       })
     setLogin({username: "", password: ""})
   }
