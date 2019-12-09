@@ -14,7 +14,7 @@ router.get("/users", (req, res) => {
 })
 
 router.get("/logout", (req, res) => {
-  req.session.reset()
+  req.bigMan.reset()
   res.json({message: "logged out"})
 })
 
@@ -39,10 +39,10 @@ router.post("/login", (req, res) => {
     .first()
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
-        req.session.user = user
+        req.bigMan.user = user
         res.status(200).json(user)
       } else {
-        res.status(401).json({message: "invalid user and pass"})
+        res.status(401).json({message: "invalid user/pass"})
       }
     })
     .catch(err => {
