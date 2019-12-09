@@ -1,15 +1,17 @@
 const express = require("express")
 const server = express()
+const session = require("client-sessions")
 const helmet = require("helmet")
 const cors = require("cors")
-const session = require("client-sessions")
+const userRouter = require("./routes/user_routes")
+
 
 
 server.use(helmet())
 server.use(cors())
 server.use(express.json())
 server.use(session({
-  cookieName: "BigMan",
+  cookieName: "session",
   secret: "fuckkkWOW",
   duration: 24 * 60 * 60 * 1000,
   cookie: {
@@ -18,5 +20,6 @@ server.use(session({
     ephemeral: false,
   }
 }))
+server.use("/api", userRouter)
 
 module.exports = server

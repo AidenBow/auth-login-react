@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "server": "nodemon index.js"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "client-sessions": "^0.8.0",
@@ -7,5 +10,8 @@
     "helmet": "^3.21.2",
     "knex": "^0.20.4",
     "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
   }
 }

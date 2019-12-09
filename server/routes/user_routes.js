@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcryptjs")
-const schema = require("./user-model")
+const Schema = require("./user_model")
 
 router.get("/users", (req, res) => {
-  schema.find()
+  Schema.find()
     .then(users => {
       res.status(200).json(users)
     })
@@ -23,7 +23,7 @@ router.post("/register", (req, res) => {
   const hash = bcrypt.hashSync(user.password, 12)
   user.password = hash
 
-  schema.register(user)
+  Schema.register(user)
     .then(user => {
       res.status(200).json(user)
     })
@@ -34,12 +34,13 @@ router.post("/register", (req, res) => {
 
 router.post("/login", (req, res) => {
   let {username, password} = req.body
-
-  schema.findBy({username}) 
+  Schema.findBy({username}) 
     .first()
     .then(user => {
+      console.log(user)
       if (user && bcrypt.compareSync(password, user.password)) {
-        req.bigMan.user = user
+        req.session.user = user
+        
         res.status(200).json(user)
       } else {
         res.status(401).json({message: "invalid user/pass"})
