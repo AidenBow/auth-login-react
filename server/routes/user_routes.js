@@ -13,14 +13,24 @@ router.get("/users", (req, res) => {
     })
 })
 
+router.get("/users/:id", (req, res) => {
+  Schema.find()
+    .then(users => {
+      res.status(200).json(users)
+    })
+    .catch(err => {
+      res.status(500).json({message: "server error", error: err})
+    })
+})
+
 router.get("/logout", (req, res) => {
-  req.bigMan.reset()
+  req.session.reset()
   res.json({message: "logged out"})
 })
 
 router.post("/register", (req, res) => {
   let user = req.body
-  const hash = bcrypt.hashSync(user.password, 12)
+  const hash = bcrypt.hashSync(user.password, 14)
   user.password = hash
 
   Schema.register(user)
